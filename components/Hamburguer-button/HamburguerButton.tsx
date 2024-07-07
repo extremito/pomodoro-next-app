@@ -7,6 +7,7 @@ const HamburguerButton = () => {
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`
   
   return (<button
+    data-testid="head-hamburguer-button"
     className="flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group"
     onClick={() => setIsOpen(!isOpen)}
   >
