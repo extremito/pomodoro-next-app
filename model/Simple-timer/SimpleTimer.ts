@@ -1,4 +1,4 @@
-class SimpleTimer {
+export default class SimpleTimer {
   private time: number
   private timerId: NodeJS.Timeout | null
 
@@ -10,8 +10,11 @@ class SimpleTimer {
   setTime(time: number) {
     this.time = time
   }
-  startTimer() {
-    this.timerId = setInterval(() => this.add1Second(), 1000)
+  startTimer(listener: Function) {
+    this.timerId = setInterval(() => {
+      this.add1Second()
+      listener()
+    }, 1000)
   }
   stopTimer() {
     this.timerId && clearInterval(this.timerId)
