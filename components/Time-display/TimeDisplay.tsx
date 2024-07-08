@@ -10,7 +10,7 @@ export default function TimeDisplay({ timeSet, timeElapsed }: ITimeDisplayProps)
   const seconds = remainingTime > 59 ? remainingTime % 60 : remainingTime
   return (<div className='flex flex-col flex-auto items-center'>
     <div className='text-3xl'>Time</div>
-    <div className='bg-white border-2 border-slate-900 p-1 text-2xl'>{`${minutes > 9 ? minutes : "0".concat(minutes.toString())}:${seconds > 9 ? seconds : (seconds > 0 ? "0".concat(seconds.toString()) : '00')}`}</div>
+    <div className='bg-white border-2 border-slate-900 p-1 text-2xl dark:bg-slate-600'>{`${minutes > 9 ? minutes : "0".concat(minutes.toString())}:${seconds > 9 ? seconds : (seconds > 0 ? "0".concat(seconds.toString()) : '00')}`}</div>
   </div>)
 }
 
