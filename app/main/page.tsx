@@ -18,14 +18,19 @@ export default function Main() {
     simpleTimer.setTime(parseInt(value))
   }
 
-  const timerButtonClick = () => {
+  const startClick = () => {
     if (!timerStarted) {
       simpleTimer.startTimer(() => setTimeElapsed(t => t + 1))
     } else {
       simpleTimer.stopTimer()
-      // setTimeElapsed(0)
     }
     setTimerStarted(!timerStarted)
+  }
+
+  const stopClick = () => {
+    setTimeElapsed(0)
+    simpleTimer.stopTimer()
+    setTimerStarted(false)
   }
 
   useEffect(() => {
@@ -33,10 +38,15 @@ export default function Main() {
   }, [isTimeLeft])
 
   return (<section>
-    <TimeDisplay timeSet={time} timeElapsed={timeElapsed} />
-    <input type="number" onChange={changeTime} value={time} />
-    <button onClick={timerButtonClick}>{timerStarted ? 'Stop' : 'Start'}</button>
-    <div>{isTimeLeft ? 'Counting' : 'Stopped'}</div>
-    <div>{isTimeLeft ? 'Ready' : 'Alarm'}</div>
+    <div className="w-full bg-red-700 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+      <TimeDisplay timeSet={time} timeElapsed={timeElapsed} />
+      <input className="p-1 text-xl" type="number" onChange={changeTime} value={time} />
+      <button className="p-2 bg-lime-700 w-6/12 rounded-lg border-2 border-slate-200 shadow-lg border-double my-1"
+        disabled={!time} onClick={startClick}>{timerStarted ? 'Pause' : 'Start'}</button>
+      <button className="p-2 bg-slate-500 w-6/12 rounded-lg border-2 border-slate-200 shadow-lg border-double my-1"
+        disabled={!timeElapsed} onClick={stopClick}>Stop</button>
+      <div className="text-2xl">{isTimeLeft ? 'Counting' : 'Stopped'}</div>
+      <div className="text-2xl">{isTimeLeft ? 'Ready' : 'Alarm'}</div>
+    </div>
   </section>)
 }

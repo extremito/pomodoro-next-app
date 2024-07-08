@@ -8,7 +8,7 @@ export default function MainLayout({
   return (
     <>
       <header><NavigationBar /></header>
-      <main>{children}</main>
+      <main className="bg-stone-300 dark:bg-stone-800 h-full">{children}</main>
     </>
   )
 }
