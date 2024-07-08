@@ -7,7 +7,7 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <header><NavigationBar /></header>
+      <header className="bg-white border-gray-200 text-2xl font-semibold dark:bg-gray-900 dark:text-white">Pomodoro Timer</header>
       <main className="bg-stone-300 dark:bg-stone-800 h-full">{children}</main>
     </>
   )
